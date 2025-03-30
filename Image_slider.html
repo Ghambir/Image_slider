@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .slider-container {
+            position: relative;
+            width: 400px;
+            margin: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Image Slider</h2>
+
+    <div class="slider-container">
+        <img id="slider" src="" alt="Image Slider">
+        <br>
+        <button class="btn" onclick="prevImage()">Previous</button>
+        <button class="btn" onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        const images = [
+            "https://stimg.cardekho.com/images/carexteriorimages/930x620/Tata/Harrier/9368/1697532960290/front-left-side-47.jpg",
+            "https://spn-sta.spinny.com/blog/20230217180351/Harrier-red-1160x769.webp?compress=true&quality=80&w=1200&dpr=2.6",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/TOYOTA_HARRIER_%28XU80%29_China_%283%29_%28cropped%29.jpg/1200px-TOYOTA_HARRIER_%28XU80%29_China_%283%29_%28cropped%29.jpg"
+        ];
+
+        let index = 0;
+
+        function updateImage() {
+            document.getElementById("slider").src = images[index];
+        }
+
+        function nextImage() {
+            index = (index + 1) % images.length;
+            updateImage();
+        }
+
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            updateImage();
+        }
+
+        // Initialize first image
+        updateImage();
+    </script>
+
+</body>
+</html>
